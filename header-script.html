@@ -67,15 +67,15 @@
     const slides = [
 			// První slide musí mít totožný obsah s obsahem nastaveným ve webnode
       {
-        src: "https://raw.githubusercontent.com/krausvo1/bethany-web/refs/heads/main/test.jpeg",
-        header: "Person One",
+        src: "https://krausvo1.github.io/bethany-web/test.jpeg",
+        title: "Person One",
         text: "Text - proč má smysl přijít, že je to pro všechny",
         buttonLabel: "Podívejte se, co děláme",
         buttonLink: "#"
       },
       {
-        src: "https://raw.githubusercontent.com/krausvo1/bethany-web/refs/heads/main/ttr_progress_2.png",
-        header: "Person Two",
+        src: "https://krausvo1.github.io/bethany-web/svatbaakrest_075",
+        title: "Person Two",
         text: "This is person two.",
         buttonLabel: "Learn More",
         buttonLink: "#"
@@ -103,6 +103,7 @@
 
 		function updateContent() {
 			imgEl.src = slides[index].src;
+      titleEl.textContent = slides[index].title;
 			textEl.textContent = slides[index].text;
 			buttonTextEl.textContent = slides[index].buttonLabel;
 			buttonLinkEl.href = slides[index].buttonLink;

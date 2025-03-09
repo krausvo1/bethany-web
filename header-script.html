@@ -1,0 +1,137 @@
+
+<style>
+  button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  button.prev:hover, button.next:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  button.prev {
+    left: 10px;
+  }
+
+  button.next {
+    right: 10px;
+  }
+
+	.fade-out {
+		opacity: 0;
+	}
+
+	.fade-in {
+		opacity: 1;
+	}
+
+  @media (max-width: 600px) {
+    button.prev, button.next {
+      padding: 8px;
+    }
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+		const pictureWrapperEl = document.querySelector("section.s-hm-claims div.s-bg div.s-bg-l");
+		const pictureEl = pictureWrapperEl.querySelector("picture");
+		const imgEl = pictureEl.querySelector("img");
+		const slideContentWrapperEl = document.querySelector("section.s-hm-claims div.s-bg + div.h-c.s-c");
+    const titleEl = slideContentWrapperEl.querySelector("h1.claim.cf span.sit-c");
+    const textEl = slideContentWrapperEl.querySelector("h3.claim.cf span.sit-c");
+    const buttonLinkEl = slideContentWrapperEl.querySelector("div.b-btn a.b-btn-l");
+    const buttonTextEl = slideContentWrapperEl.querySelector("div.b-btn span.b-btn-t");
+
+		pictureEl.querySelector("source").remove();
+
+		imgEl.setAttribute("style", "transition: opacity 1s ease-in-out")
+
+		// Arrows
+		const leftButton = document.createElement("button");
+		leftButton.setAttribute("class", "prev");
+		leftButton.innerText = "❮";
+		slideContentWrapperEl.appendChild(leftButton);
+
+		const rightButton = document.createElement("button");
+		rightButton.setAttribute("class", "next");
+		rightButton.innerText = "❯";
+		slideContentWrapperEl.appendChild(rightButton);
+
+    const slides = [
+			// První slide musí mít totožný obsah s obsahem nastaveným ve webnode
+      {
+        src: "https://raw.githubusercontent.com/krausvo1/bethany-web/refs/heads/main/test.jpeg",
+        header: "Person One",
+        text: "Text - proč má smysl přijít, že je to pro všechny",
+        buttonLabel: "Podívejte se, co děláme",
+        buttonLink: "#"
+      },
+      {
+        src: "https://raw.githubusercontent.com/krausvo1/bethany-web/refs/heads/main/ttr_progress_2.png",
+        header: "Person Two",
+        text: "This is person two.",
+        buttonLabel: "Learn More",
+        buttonLink: "#"
+      },
+    ];
+
+    const prevButton = document.querySelector('button.prev');
+    const nextButton = document.querySelector('button.next');
+    let index = 0;
+    let interval = setInterval(nextSlide, 3000);
+
+    function updateCarousel() {
+      // Fade out
+      imgEl.classList.remove("fade-in");
+      imgEl.classList.add("fade-out");
+
+      setTimeout(() => {
+        updateContent();
+
+        // Fade in
+        imgEl.classList.remove("fade-out");
+        imgEl.classList.add("fade-in");
+      }, 1000); // Wait for fade-out transition before changing
+    }
+
+		function updateContent() {
+			imgEl.src = slides[index].src;
+			textEl.textContent = slides[index].text;
+			buttonTextEl.textContent = slides[index].buttonLabel;
+			buttonLinkEl.href = slides[index].buttonLink;
+		}
+
+    function nextSlide() {
+      index = (index + 1) % slides.length;
+      updateCarousel();
+      resetInterval();
+    }
+
+    function prevSlide() {
+      index = (index - 1 + slides.length) % slides.length;
+      updateCarousel();
+      resetInterval();
+    }
+
+    function resetInterval() {
+      clearInterval(interval);
+      interval = setInterval(nextSlide, 6000);
+    }
+
+		prevButton.addEventListener('click', () => {
+			nextSlide();
+		});
+
+		nextButton.addEventListener('click', () => {
+			nextSlide();
+		});
+  });
+</script>
+

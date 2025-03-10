@@ -48,7 +48,7 @@
 		const imgEl = pictureEl.querySelector("img");
 		const slideContentWrapperEl = document.querySelector("section.s-hm-claims div.s-bg + div.h-c.s-c");
     const titleEl = slideContentWrapperEl.querySelector("h1.claim.cf span.sit-c");
-    const textEl = slideContentWrapperEl.querySelector("h3.claim.cf span.sit-c");
+    // const textEl = slideContentWrapperEl.querySelector("h3.claim.cf span.sit-c");
     const buttonLinkEl = slideContentWrapperEl.querySelector("div.b-btn a.b-btn-l");
     const buttonTextEl = slideContentWrapperEl.querySelector("div.b-btn span.b-btn-t");
 
@@ -70,17 +70,39 @@
     const slides = [
 			// První slide musí mít totožný obsah s obsahem nastaveným ve webnode
       {
-        src: "https://krausvo1.github.io/bethany-web/test.jpeg",
-        title: "Person One",
-        text: "Text - proč má smysl přijít, že je to pro všechny",
-        buttonLabel: "Podívejte se, co děláme",
+        src: "https://krausvo1.github.io/bethany-web/corporate-team-spending-weekend-together.jpg",
+        title: "S námi nejste sami",
+        buttonLabel: "Chci vědět více",
         buttonLink: "#"
       },
       {
-        src: "https://krausvo1.github.io/bethany-web/svatbaakrest_075.jpeg",
-        title: "Person Two",
-        text: "This is person two.",
-        buttonLabel: "Learn More",
+        src: "https://krausvo1.github.io/bethany-web/2151083371.jpg",
+        title: "Pro nás budete důležití",
+        buttonLabel: "Chci vědět více",
+        buttonLink: "#"
+      },
+      {
+        src: "https://krausvo1.github.io/bethany-web/group-people-reading-books-therapy-session.jpg",
+        title: "Pojďte se zapojit do společných aktivit – Pěvecký sbor",
+        buttonLabel: "Chci vědět více",
+        buttonLink: "#"
+      },
+      {
+        src: "https://krausvo1.github.io/bethany-web/svatbaakrest_294_2.jpg",
+        title: "Pojďte se zapojit do společných aktivit – Klub zdravé výživy",
+        buttonLabel: "Chci vědět více",
+        buttonLink: "#"
+      },
+      {
+        src: "https://krausvo1.github.io/bethany-web/2149230538.jpg",
+        title: "Chcete učinit svět lepším?",
+        buttonLabel: "Chci vědět více",
+        buttonLink: "#"
+      },
+      {
+        src: "https://krausvo1.github.io/bethany-web/svatbaakrest_077_2.jpg",
+        title: "Chcete s námi prožívat šťastné okamžiky?",
+        buttonLabel: "Chci vědět více",
         buttonLink: "#"
       },
     ];
@@ -107,7 +129,7 @@
 		function updateContent() {
 			imgEl.src = slides[index].src;
       titleEl.textContent = slides[index].title;
-			textEl.textContent = slides[index].text;
+			// textEl.textContent = slides[index].text;
 			buttonTextEl.textContent = slides[index].buttonLabel;
 			buttonLinkEl.href = slides[index].buttonLink;
 		}
